@@ -52,6 +52,8 @@
      <Compile Include="Assets\Scripts\DeathCollider.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\PlatformManager.cs" />
+     <Compile Include="Assets\Scripts\RockGenerator.cs" />
+     <Compile Include="Assets\Scripts\SpeedLinesGenerator.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Kru/work/EvileOlive/EvileOlive/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

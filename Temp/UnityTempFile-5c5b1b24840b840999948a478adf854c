@@ -312,3 +312,5 @@
 "Assets/Scripts/DeathCollider.cs"
 "Assets/Scripts/GameController.cs"
 "Assets/Scripts/PlatformManager.cs"
+"Assets/Scripts/RockGenerator.cs"
+"Assets/Scripts/SpeedLinesGenerator.cs"

@@ -3,16 +3,17 @@ using UnityEngine;
 
 public class RockGenerator : MonoBehaviour
 {
-    public int numberOfObjects = 3;
+    public int numberOfObjects = 4;
 	public Vector3 startPosition;
 	public Vector3 nextPosition;
     public Transform prefab;
-	public float recycleOffset = 40.0f;
+	public float recycleOffset = 70.0f;
     private Queue<Transform> objectQueue;
 	private float spriteSize = 3f * 33.69f;
     private float rockSpeed;
     public float rockParallax = 0.5f;
     public GameObject character;
+    private bool firstTime = true;
 
 
     // Start is called before the first frame update
@@ -25,6 +26,13 @@ public class RockGenerator : MonoBehaviour
 			}
 			for (int i = 0; i < numberOfObjects; i++) {
 				Recycle();
+                // float position = nextPosition.x;
+                // position += 0.5f * spriteSize;
+                // Transform o = objectQueue.Dequeue();
+                // o.localPosition = new Vector3 (position, startPosition.y, o.localPosition.z);
+                // nextPosition.x += spriteSize;
+                // objectQueue.Enqueue(o);
+                // Debug.Log(o.localPosition.x);
 			}
             //character = GameObject.FindWithTag("Player");
     }
@@ -38,20 +46,31 @@ public class RockGenerator : MonoBehaviour
         foreach (Transform rock in objectQueue) {
             Vector3 movement = new Vector3( rockSpeed ,  0,   0);
 			movement *= Time.deltaTime;
-
             rock.Translate(movement);
+	        //nextPosition.Translate(movement);
 		}
 	}
 
     private void Recycle () {
-
-		float position = nextPosition.x;
-
+        float position = nextPosition.x;
+        if (firstTime){
+            //position += 1 * spriteSize;
+            firstTime = false;
+            //o.localScale *=-1;       
+        }
+		// position = nextPosition.x;
 		//for constant length
-		position += 0.5f * spriteSize;
+		//position += 0.5f * spriteSize;
 		Transform o = objectQueue.Dequeue();
+        
+    
+        // if (!firstTime){
+        //     position = o.localPosition.x;
+        // }
+        position += 0.5f * spriteSize;
 		o.localPosition = new Vector3 (position, startPosition.y, o.localPosition.z);
 		nextPosition.x += spriteSize;
 		objectQueue.Enqueue(o);
+        Debug.Log(o.localPosition.x);
     }
 }
