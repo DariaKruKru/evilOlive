@@ -13,7 +13,6 @@ public class RockGenerator : MonoBehaviour
     private float rockSpeed;
     public float rockParallax = 0.5f;
     public GameObject character;
-    private bool firstTime = true;
 
 
     // Start is called before the first frame update
@@ -48,25 +47,14 @@ public class RockGenerator : MonoBehaviour
 			movement *= Time.deltaTime;
             rock.Translate(movement);
 	        //nextPosition.Translate(movement);
+            nextPosition.x += movement.x;
+            //Vector3 positionMovement =
 		}
 	}
 
     private void Recycle () {
         float position = nextPosition.x;
-        if (firstTime){
-            //position += 1 * spriteSize;
-            firstTime = false;
-            //o.localScale *=-1;       
-        }
-		// position = nextPosition.x;
-		//for constant length
-		//position += 0.5f * spriteSize;
 		Transform o = objectQueue.Dequeue();
-        
-    
-        // if (!firstTime){
-        //     position = o.localPosition.x;
-        // }
         position += 0.5f * spriteSize;
 		o.localPosition = new Vector3 (position, startPosition.y, o.localPosition.z);
 		nextPosition.x += spriteSize;
