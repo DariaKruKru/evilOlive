@@ -23,7 +23,7 @@ public class CharacterController2D : MonoBehaviour
     public static int score = 0;
     private float waitingTime = 1.5f;
 
-    private bool alive = true;
+    public static bool alive = true;
 
     private void Awake()
     {      
@@ -150,7 +150,7 @@ public class CharacterController2D : MonoBehaviour
             if (transform.position.y > 0){
                 positionY = 4;
             } else positionY = -4;
-            transform.position = new Vector3(transform.position.x + 4, positionY, 0);
+            transform.position = new Vector3(transform.position.x + 2, positionY, 0);
             Debug.Log("respawn");
             //gameObject.SetActive(true);
            

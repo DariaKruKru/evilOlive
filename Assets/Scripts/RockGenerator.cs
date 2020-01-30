@@ -18,38 +18,32 @@ public class RockGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        	objectQueue = new Queue<Transform>(numberOfObjects);
-			nextPosition = startPosition;
-			for (int i = 0; i < numberOfObjects; i++) {
-				objectQueue.Enqueue((Transform)Instantiate(prefab));
-			}
-			for (int i = 0; i < numberOfObjects; i++) {
-				Recycle();
-                // float position = nextPosition.x;
-                // position += 0.5f * spriteSize;
-                // Transform o = objectQueue.Dequeue();
-                // o.localPosition = new Vector3 (position, startPosition.y, o.localPosition.z);
-                // nextPosition.x += spriteSize;
-                // objectQueue.Enqueue(o);
-                // Debug.Log(o.localPosition.x);
-			}
-            //character = GameObject.FindWithTag("Player");
+        objectQueue = new Queue<Transform>(numberOfObjects);
+        nextPosition = startPosition;
+        for (int i = 0; i < numberOfObjects; i++) {
+            objectQueue.Enqueue((Transform)Instantiate(prefab));
+        }
+        for (int i = 0; i < numberOfObjects; i++) {
+            Recycle();
+        }
     }
 
-	void FixedUpdate () {
-		if (objectQueue.Peek().localPosition.x + recycleOffset + objectQueue.Peek().localScale.x < CharacterController2D.distanceTraveled) {
+	void Update () {
+		if (objectQueue.Peek().localPosition.x + recycleOffset + 100 < CharacterController2D.distanceTraveled) {
 			Recycle();
 		}
-        float characterSpeed = character.GetComponent<CharacterController2D>().characterSpeed;
-		rockSpeed = characterSpeed * rockParallax;
-        foreach (Transform rock in objectQueue) {
+        if (CharacterController2D.alive){
+            float characterSpeed = character.GetComponent<CharacterController2D>().characterSpeed;
+            rockSpeed = characterSpeed * rockParallax;
             Vector3 movement = new Vector3( rockSpeed ,  0,   0);
-			movement *= Time.deltaTime;
-            rock.Translate(movement);
-	        //nextPosition.Translate(movement);
+            movement *= Time.deltaTime;
             nextPosition.x += movement.x;
-            //Vector3 positionMovement =
-		}
+            foreach (Transform rock in objectQueue) {
+                rock.Translate(movement);
+                //rock.Translate(new Vector3 (Mathf.Lerp(rock.position.x, rockSpeed, Time.deltaTime), 0, 0));
+            }
+
+        }
 	}
 
     private void Recycle () {

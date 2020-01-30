@@ -13,7 +13,7 @@ public class SpeedLinesGenerator : MonoBehaviour
     private Queue<Transform> objectQueue;
 	private float spriteSize = 5f;
     public float minSize, maxSize, minGapX, maxGapX, minGapY, maxGapY, minPosY, maxPosY;
-     private float lineSpeed;
+    private float lineSpeed;
     public float lineParallax = 0.18f;
     public GameObject character;
 
@@ -24,7 +24,7 @@ public class SpeedLinesGenerator : MonoBehaviour
 			nextPosition = startPosition;
             
 			for (int i = 0; i < numberOfObjects; i++) {
-                int j = Random.Range(0, numOfPrefabs);
+                int j = Random.Range(1, numOfPrefabs);
 				objectQueue.Enqueue((Transform)Instantiate(prefab[j]));
 			}
 

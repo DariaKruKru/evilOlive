@@ -1834,7 +1834,7 @@ MonoBehaviour:
   maxSize: 4
   minGapX: 0
   maxGapX: 24
-  minGapY: 0.8
+  minGapY: 1
   maxGapY: 7
   minPosY: -4.1
   maxPosY: 4.1
@@ -2535,6 +2535,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1559904383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1559904384}
+  - component: {fileID: 1559904385}
+  m_Layer: 0
+  m_Name: LivesGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1559904384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559904383}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1653089724}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1559904385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559904383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cd8654dc7784958928162b91c5134e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: 250, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  numberOfObjects: 10
+  prefab: {fileID: 4769185979258248, guid: 18a092db8d9ba438bb38097ba5e70533, type: 3}
+  recycleOffset: 60
+  minGapX: 70
+  maxGapX: 270
+  minPosY: -4.2
+  maxPosY: 4.2
 --- !u!1 &1626083987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,7 +2678,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1559904384}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2666,17 +2719,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1653089723}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7dc9bc759ee044a1913eca1e7241220, type: 3}
+  m_Script: {fileID: 11500000, guid: daeb9b546ec0e46da90f77deb3263cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 1421237084457658, guid: 12b45af057c0b422b972e08167f4e732, type: 3}
-  recycleOffset: 40
-  distanceBetweenCoins: 40
-  minX: 0
-  maxX: 0
-  minY: -4.3
-  maxY: 4.3
-  locationY: 0
+  numberOfObjects: 5
+  startPosition: {x: 30, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  numOfPrefabs: 5
+  prefab:
+  - {fileID: 4769185979258248, guid: 18a092db8d9ba438bb38097ba5e70533, type: 3}
+  recycleOffset: 70
+  minSize: 1
+  maxSize: 1
+  minGapX: 30
+  maxGapX: 70
+  minGapY: 1
+  maxGapY: 8
+  minPosY: -4.1
+  maxPosY: 4.1
+  lineParallax: 0
+  character: {fileID: 1866026868}
 --- !u!4 &1710714753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4439716196291104, guid: 8da7cdc1bf47e4132abe47c2353a9328,
@@ -2782,7 +2844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1735402795}
   m_Layer: 0
-  m_Name: BackgroundManager
+  m_Name: BackgroundManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
