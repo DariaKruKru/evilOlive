@@ -36,15 +36,28 @@ public class RockGenerator : MonoBehaviour
             float characterSpeed = character.GetComponent<CharacterController2D>().characterSpeed;
             rockSpeed = characterSpeed * rockParallax;
             Vector3 movement = new Vector3( rockSpeed ,  0,   0);
+            //movement *= Time.deltaTime;
+            //nextPosition.x += movement.x;
             movement *= Time.deltaTime;
-            nextPosition.x += movement.x;
             foreach (Transform rock in objectQueue) {
                 rock.Translate(movement);
-                //rock.Translate(new Vector3 (Mathf.Lerp(rock.position.x, rockSpeed, Time.deltaTime), 0, 0));
+                //rock.Translate ( Vector3.Lerp(transform.position, movement, 0.5f * Time.deltaTime));
+                //rockMovement(rock);
+                //rock.Translate(new Vector3 (Mathf.Lerp(rock.position.x, movement.x, 0.5f * Time.deltaTime), 0, 0));
             }
-
+            nextPosition.x += movement.x;
         }
 	}
+
+    private void rockMovement(Transform rock){
+        Vector3 movement = new Vector3(0, 0, 0);
+        rockSpeed = Mathf.Lerp(
+            rock.position.x, 
+            1, 
+            Time.deltaTime * rockSpeed
+        );
+        rock.Translate(movement);
+    }
 
     private void Recycle () {
         float position = nextPosition.x;
@@ -53,6 +66,6 @@ public class RockGenerator : MonoBehaviour
 		o.localPosition = new Vector3 (position, startPosition.y, o.localPosition.z);
 		nextPosition.x += spriteSize;
 		objectQueue.Enqueue(o);
-        Debug.Log(o.localPosition.x);
+        //Debug.Log(o.localPosition.x);
     }
 }

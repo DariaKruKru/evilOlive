@@ -117,7 +117,8 @@ public class CharacterController2D : MonoBehaviour
 
             case "Life":
                 //col.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                Destroy(col.gameObject);
+                //Destroy(col.gameObject);
+                col.gameObject.SetActive(false);
                 if (lives<5){
                     lives++;
                 }
@@ -125,15 +126,18 @@ public class CharacterController2D : MonoBehaviour
 
             case "Bonus":
                 col.gameObject.SetActive(false);
+                Destroy(col.gameObject);
                 score++;
                 break;
 
             case "Shield":
-                Destroy(col.gameObject);
+                //Destroy(col.gameObject);
+                col.gameObject.SetActive(false);
                 break;
 
             case "Speed":
-                Destroy(col.gameObject);
+                //Destroy(col.gameObject);
+                col.gameObject.SetActive(false);
                 break;
             
             default:

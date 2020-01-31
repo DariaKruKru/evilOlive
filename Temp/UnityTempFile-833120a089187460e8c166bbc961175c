@@ -309,6 +309,7 @@
 "Assets/Scripts/CharacterController2D.cs"
 "Assets/Scripts/CoinManager.cs"
 "Assets/Scripts/CoinManager_Old.cs"
+"Assets/Scripts/CollectablesManager.cs"
 "Assets/Scripts/DeathCollider.cs"
 "Assets/Scripts/GameController.cs"
 "Assets/Scripts/PlatformManager.cs"
