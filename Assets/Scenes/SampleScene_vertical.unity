@@ -1830,7 +1830,7 @@ MonoBehaviour:
   - {fileID: 1920471524}
   - {fileID: 1933387311}
   recycleOffset: 50
-  minSize: 1.5
+  minSize: 1
   maxSize: 4
   minGapX: 0
   maxGapX: 24
@@ -3427,6 +3427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073066645976812217, guid: 75afb218bf7164c4786397a88a0165c9,
+        type: 3}
+      propertyPath: m_MinVertexDistance
+      value: 0.005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75afb218bf7164c4786397a88a0165c9, type: 3}

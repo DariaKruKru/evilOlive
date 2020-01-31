@@ -2,7 +2,6 @@
 using System.Collections;
 
 
-[RequireComponent(typeof(CircleCollider2D))]
 public class CharacterController2D : MonoBehaviour
 {
     public float characterSpeed = 12f;
@@ -14,7 +13,6 @@ public class CharacterController2D : MonoBehaviour
     public float smoothSpeedUpCoeff = 4;
     public static float distanceTraveled;
     public bool downGravity = true;
-    public CircleCollider2D circleCollider;
     public Rigidbody2D rigidbody;
     public TrailRenderer trail;
     private float gravityScale = 10f;
@@ -22,12 +20,13 @@ public class CharacterController2D : MonoBehaviour
     public bool isGrounded = false;
     public static int score = 0;
     private float waitingTime = 1.5f;
-
     public static bool alive = true;
+    float changingSizeVelocity = 0.0f;
+    private bool isSqeezed = false;
+    private bool isExpanding = false;
 
     private void Awake()
     {      
-        circleCollider = GetComponent<CircleCollider2D>();
         trail = GetComponent<TrailRenderer>();
     }
 
@@ -35,6 +34,19 @@ public class CharacterController2D : MonoBehaviour
     {
         if (alive){
             Movement(); 
+            if (isSqeezed){
+                Sqeezing();
+                if (transform.localScale.x <=0.22f){
+                    isSqeezed = false;
+                    isExpanding=true;
+                }
+            }
+            if(isExpanding){
+                NormalShape();
+                if (transform.localScale.x >=0.278f){
+                    isExpanding=false;
+                }
+            }
 
             if (Input.GetKeyDown("space") && isGrounded)
             {
@@ -85,11 +97,26 @@ public class CharacterController2D : MonoBehaviour
 	{
         if (col.gameObject.tag == "Platform")
         {
-		isGrounded = true;
-        col.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true; //enable glow
-        //Debug.Log("OnCollisionEnter2D");
+            isGrounded = true;
+            col.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true; //enable glow
+            //Sqeezing();
+            isSqeezed = true;
         }
 	}    
+
+    void Sqeezing(){
+        float newSize = 0.1f;
+        float normalScale = Mathf.SmoothDamp(transform.localScale.x, newSize, ref changingSizeVelocity, 0.12f);
+        transform.localScale = new Vector3 (normalScale, transform.localScale.y, transform.localScale.z);
+        GetComponent<TrailRenderer>().startWidth = transform.localScale.x / 0.28f;
+    }
+
+    void NormalShape(){
+        float normalSize = 0.28f;
+        float normalScale = Mathf.SmoothDamp(transform.localScale.x, normalSize, ref changingSizeVelocity, 0.11f);
+        transform.localScale = new Vector3 (normalScale, transform.localScale.y, transform.localScale.z);
+        GetComponent<TrailRenderer>().startWidth = transform.localScale.x / 0.28f;
+    }
 
     void OnCollisionExit2D(Collision2D col) 
 	{
@@ -197,6 +224,6 @@ public class CharacterController2D : MonoBehaviour
 
     void GameOver(){
             Debug.Log("Game Over");
-            Application.Quit();
+            //Application.Quit();
     }
 }
