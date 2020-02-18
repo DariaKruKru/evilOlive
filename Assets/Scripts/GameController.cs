@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -39,6 +40,11 @@ public class GameController : MonoBehaviour {
 				PauseButton();
         } 
 
+		if(Input.GetKeyDown (KeyCode.R)) 
+        {
+			Restart();
+        } 
+
 		//lives counter
 		lives = CharacterController2D.lives;
 		for(int i=0; i < hearts.Length; i++)
@@ -58,14 +64,25 @@ public class GameController : MonoBehaviour {
 
 		//energy bar
 
-
 		//score board
 		score.text = CharacterController2D.score.ToString();
 		distance.text = CharacterController2D.distanceTraveled.ToString();
-
 	}
 
-	 private void PauseGame()
+	public static void Restart(){
+		string thisScene = SceneManager.GetActiveScene ().name;
+		//SceneManager.UnloadSceneAsync(thisScene);
+		GameObject[] GameObjects = (FindObjectsOfType<GameObject>() as GameObject[]);
+ 
+		for (int i = 0; i < GameObjects.Length; i++)
+		{
+			Destroy(GameObjects[i]);
+		}
+		
+		SceneManager.LoadScene(thisScene);
+	}
+
+	private void PauseGame()
     {
         Time.timeScale = 0;
 		isPaused = true;
