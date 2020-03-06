@@ -5,8 +5,8 @@ public class PlatformManager : MonoBehaviour {
 
 	public int numberOfObjects = 10;
 	public Vector3 startPosition;
-	private Vector3 nextPosition;
-	private float previousSize;
+	public Vector3 nextPosition;
+	public float previousSize;
 	public Transform prefab;
 	public float recycleOffset = 40.0f;
 	private Queue<Transform> objectQueue;
@@ -16,7 +16,7 @@ public class PlatformManager : MonoBehaviour {
 	public GameObject coinGenerator;
 	public GameObject coinGenerator_second;
 
-	void OnEnable() 
+	void Start () 
 		{
 			objectQueue = new Queue<Transform>(numberOfObjects);
 			nextPosition = startPosition;

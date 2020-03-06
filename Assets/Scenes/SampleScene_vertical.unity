@@ -1028,6 +1028,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfObjects: 10
   startPosition: {x: 35, y: 5, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  previousSize: 0
   prefab: {fileID: 4749068445908504, guid: fd7e33c5f88634f1c9c00c79a84a667f, type: 3}
   recycleOffset: 60
   minSize: 1
@@ -2616,6 +2618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfObjects: 5
   startPosition: {x: 200, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  previousSize: 0
   prefab: {fileID: 4749068445908504, guid: fd7e33c5f88634f1c9c00c79a84a667f, type: 3}
   recycleOffset: 225
   minSize: 0.8
@@ -2656,6 +2660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1653089724}
   - component: {fileID: 1653089725}
+  - component: {fileID: 1653089726}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2705,6 +2710,35 @@ MonoBehaviour:
   distance: {fileID: 701287044}
   isPaused: 0
   pausePanel: {fileID: 1516214756}
+--- !u!114 &1653089726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653089723}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daeb9b546ec0e46da90f77deb3263cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfObjects: 5
+  startPosition: {x: 30, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  numOfPrefabs: 5
+  prefab:
+  - {fileID: 4769185979258248, guid: 18a092db8d9ba438bb38097ba5e70533, type: 3}
+  recycleOffset: 70
+  minSize: 1
+  maxSize: 1
+  minGapX: 30
+  maxGapX: 70
+  minGapY: 1
+  maxGapY: 8
+  minPosY: -4.1
+  maxPosY: 4.1
+  lineParallax: 0
+  character: {fileID: 1866026868}
 --- !u!4 &1710714753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4439716196291104, guid: 8da7cdc1bf47e4132abe47c2353a9328,
@@ -2775,6 +2809,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfObjects: 10
   startPosition: {x: 50, y: -5, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  previousSize: 0
   prefab: {fileID: 4749068445908504, guid: fd7e33c5f88634f1c9c00c79a84a667f, type: 3}
   recycleOffset: 85
   minSize: 0.8

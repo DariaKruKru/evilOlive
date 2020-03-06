@@ -138,9 +138,7 @@ public class CharacterController2D : MonoBehaviour
                 // TrailRenderer trail = gameObject.GetComponent<TrailRenderer>();
                 //trail.emitting = false;
                 alive = false;
-                if (lives > 1){
-                    Invoke("Death", 0.5f);
-                } else Invoke("GameOver",1);
+                Invoke("Death", 1);
                 //StartCoroutine(WaitAndRespawn());
             break;
 
@@ -184,6 +182,7 @@ public class CharacterController2D : MonoBehaviour
                 positionY = 4;
             } else positionY = -4;
             transform.position = new Vector3(transform.position.x + 2, positionY, 0);
+            Debug.Log("respawn");
             //gameObject.SetActive(true);
            
             trail.emitting = false;
@@ -205,6 +204,7 @@ public class CharacterController2D : MonoBehaviour
         // while (trail.time<0.6f){
         //     trail.time += trail.time;
         // }
+        
     }
 
     public IEnumerator WaitAndRespawn() 
@@ -224,8 +224,6 @@ public class CharacterController2D : MonoBehaviour
 
     void GameOver(){
             Debug.Log("Game Over");
-            
-            GameController.Restart();
             //Application.Quit();
     }
 }
