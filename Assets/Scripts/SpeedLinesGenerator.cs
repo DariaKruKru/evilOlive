@@ -34,7 +34,7 @@ public class SpeedLinesGenerator : MonoBehaviour
     }
 
 	void FixedUpdate () {
-		if (objectQueue.Peek().localPosition.x + recycleOffset + objectQueue.Peek().localScale.x < CharacterController2D.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.x + recycleOffset + objectQueue.Peek().localScale.x < character.GetComponent<CharacterController2D>().distanceTraveled) {
 			Recycle();
 		}
         float characterSpeed = character.GetComponent<CharacterController2D>().characterSpeed;

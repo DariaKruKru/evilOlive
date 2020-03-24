@@ -29,10 +29,10 @@ public class RockGenerator : MonoBehaviour
     }
 
 	void Update () {
-		if (objectQueue.Peek().localPosition.x + recycleOffset + 100 < CharacterController2D.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.x + recycleOffset + 100 < character.GetComponent<CharacterController2D>().distanceTraveled) {
 			Recycle();
 		}
-        if (CharacterController2D.alive){
+        if (character.GetComponent<CharacterController2D>().alive){
             float characterSpeed = character.GetComponent<CharacterController2D>().characterSpeed;
             rockSpeed = characterSpeed * rockParallax;
             Vector3 movement = new Vector3( rockSpeed ,  0,   0);

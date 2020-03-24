@@ -12,6 +12,7 @@ public class CollectablesManager : MonoBehaviour
 	public float recycleOffset = 60.0f;
     private Queue<Transform> objectQueue;
     public float minGapX, maxGapX, minPosY = -4.2f, maxPosY= 4.2f;
+    public GameObject character;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class CollectablesManager : MonoBehaviour
     }
 
 	void FixedUpdate () {
-		if (objectQueue.Peek().localPosition.x + recycleOffset + objectQueue.Peek().localScale.x < CharacterController2D.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.x + recycleOffset + objectQueue.Peek().localScale.x < character.GetComponent<CharacterController2D>().distanceTraveled) {
 			Recycle();
 	    }
     }

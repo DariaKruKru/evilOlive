@@ -13,16 +13,22 @@ public class CoinManager : MonoBehaviour {
 	private List<GameObject> coinsList; 
 	private GameObject[] activeCoins;
 	public float locationY;
+	public GameObject character;
 
 	void Start () {
-
+		character = GameObject.FindWithTag("Player");
+		Debug.Log("CoinManager.Start()");
+		if (coinsList != null) {
+			Debug.Log("coinsList.size " + coinsList.Count);
+		}
 	}
 	
 	public void GenerateCoins (float startPositionX, float endPositionX, int maxPossibleCoinsNum) {
-		
+		Debug.Log("CoinManager.GenerateCoins()");
+
 		float platformLength = endPositionX - startPositionX;
 		
-		int numOfCoins = Random.Range (0, maxPossibleCoinsNum);
+		int numOfCoins = Random.Range (1, maxPossibleCoinsNum);
 		float neededLength = (platformLength * numOfCoins) / maxPossibleCoinsNum;
 		float maxStart = platformLength - neededLength;
 		float actualStart = Random.Range(startPositionX, startPositionX + maxStart);
@@ -34,6 +40,7 @@ public class CoinManager : MonoBehaviour {
 			coinsList.Add(newCoin);
 			nextPosition += distanceBetweenCoins;
 		}
+		Debug.Log("CoinManager.GenerateCoins coinsList.size " + coinsList.Count);
 	}
 
 	void Update () {
@@ -41,7 +48,7 @@ public class CoinManager : MonoBehaviour {
     	activeCoins = GameObject.FindGameObjectsWithTag("Bonus");
 		foreach (GameObject coin in activeCoins) {
 			//Debug.Log(coin.transform.localPosition.x);
-			if (coin.transform.position.x + recycleOffset < CharacterController2D.distanceTraveled) {
+			if (coin.transform.position.x + recycleOffset < character.GetComponent<CharacterController2D>().distanceTraveled) {
 				//RemoveCoin(coin);
 				Destroy(coin);
 				//coinsList.Remove(coin);

@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!58 &1073066645976812214
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -120,7 +120,6 @@ MonoBehaviour:
   gravityIncreaser: 0.2
   smoothSpeedUpCoeff: 4
   downGravity: 1
-  circleCollider: {fileID: 1073066645976812214}
   rigidbody: {fileID: 1073066645976812219}
   trail: {fileID: 0}
   isGrounded: 0

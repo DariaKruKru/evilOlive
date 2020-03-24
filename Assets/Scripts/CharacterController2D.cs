@@ -11,19 +11,20 @@ public class CharacterController2D : MonoBehaviour
     public float speedIncreaser;
     public float gravityIncreaser;
     public float smoothSpeedUpCoeff = 4;
-    public static float distanceTraveled;
+    public float distanceTraveled; //to change
     public bool downGravity = true;
     public Rigidbody2D rigidbody;
     public TrailRenderer trail;
     private float gravityScale = 10f;
-    public static int lives = 3;
+    public int lives = 3; //to change
     public bool isGrounded = false;
-    public static int score = 0;
+    public int score = 0;
     private float waitingTime = 1.5f;
-    public static bool alive = true;
+    public bool alive = true; //to change
     float changingSizeVelocity = 0.0f;
     private bool isSqeezed = false;
     private bool isExpanding = false;
+    public GameObject GameController;
 
     private void Awake()
     {      
@@ -106,14 +107,14 @@ public class CharacterController2D : MonoBehaviour
 
     void Sqeezing(){
         float newSize = 0.1f;
-        float normalScale = Mathf.SmoothDamp(transform.localScale.x, newSize, ref changingSizeVelocity, 0.12f);
+        float normalScale = Mathf.SmoothDamp(transform.localScale.x, newSize, ref changingSizeVelocity, 0.07f);
         transform.localScale = new Vector3 (normalScale, transform.localScale.y, transform.localScale.z);
         GetComponent<TrailRenderer>().startWidth = transform.localScale.x / 0.28f;
     }
 
     void NormalShape(){
         float normalSize = 0.28f;
-        float normalScale = Mathf.SmoothDamp(transform.localScale.x, normalSize, ref changingSizeVelocity, 0.11f);
+        float normalScale = Mathf.SmoothDamp(transform.localScale.x, normalSize, ref changingSizeVelocity, 0.07f);
         transform.localScale = new Vector3 (normalScale, transform.localScale.y, transform.localScale.z);
         GetComponent<TrailRenderer>().startWidth = transform.localScale.x / 0.28f;
     }
@@ -224,6 +225,7 @@ public class CharacterController2D : MonoBehaviour
 
     void GameOver(){
             Debug.Log("Game Over");
+            GameController.GetComponent<GameController>().Restart();
             //Application.Quit();
     }
 }

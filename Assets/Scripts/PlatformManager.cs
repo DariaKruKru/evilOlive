@@ -15,9 +15,11 @@ public class PlatformManager : MonoBehaviour {
 	private float maxDistance = 1;
 	public GameObject coinGenerator;
 	public GameObject coinGenerator_second;
+	public GameObject character;
 
 	void Start () 
 		{
+			GameObject character = GameObject.FindWithTag("Player");
 			objectQueue = new Queue<Transform>(numberOfObjects);
 			nextPosition = startPosition;
 			for (int i = 0; i < numberOfObjects; i++) {
@@ -29,7 +31,7 @@ public class PlatformManager : MonoBehaviour {
 		}
 
 	void FixedUpdate () {
-		if (objectQueue.Peek().localPosition.x + recycleOffset + objectQueue.Peek().localScale.x < CharacterController2D.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.x + recycleOffset + objectQueue.Peek().localScale.x < character.GetComponent<CharacterController2D>().distanceTraveled) {
 			Recycle();
 		}
 	}

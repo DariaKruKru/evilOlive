@@ -48,11 +48,11 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CharacterController2D.cs" />
      <Compile Include="Assets\Scripts\CoinManager.cs" />
-     <Compile Include="Assets\Scripts\CoinManager_Old.cs" />
      <Compile Include="Assets\Scripts\CollectablesManager.cs" />
      <Compile Include="Assets\Scripts\DeathCollider.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\PlatformManager.cs" />
+     <Compile Include="Assets\Scripts\restartHelp.cs" />
      <Compile Include="Assets\Scripts\RockGenerator.cs" />
      <Compile Include="Assets\Scripts\SpeedLinesGenerator.cs" />
  <Reference Include="Unity.Timeline.Editor">
