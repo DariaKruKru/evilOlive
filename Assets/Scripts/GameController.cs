@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 	public bool isPaused = false;
 	public GameObject pausePanel;
 	public GameObject character;
+	[SerializeField] StaticBluredScreen m_StaticBluredScreen;
 
 	
 	// Use this for initialization
@@ -89,16 +90,18 @@ public class GameController : MonoBehaviour {
 
 	private void PauseGame()
     {
+		m_StaticBluredScreen.Capture();
         Time.timeScale = 0;
 		isPaused = true;
         pausePanel.SetActive(true);
-        //Disable scripts that still work while timescale is set to 0
+		
     } 
     private void ContinueGame()
     {
         Time.timeScale = 1;
 		isPaused = false;
         pausePanel.SetActive(false);
+		m_StaticBluredScreen.texture = null;
         //enable the scripts again
     }
 
