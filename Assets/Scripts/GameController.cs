@@ -88,6 +88,12 @@ public class GameController : MonoBehaviour {
 		//SceneManager.LoadScene("RestartUtilite");
 	}
 
+	public void MainMenu() {
+		SceneManager.LoadScene("MainMenu");
+
+	}
+
+
 	private void PauseGame()
     {
 		m_StaticBluredScreen.Capture();
